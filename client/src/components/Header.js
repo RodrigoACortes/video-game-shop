@@ -14,6 +14,12 @@ class Header extends Component {
             <a href="/auth/google">Log In With Google</a>
           </li>
         );
+        case undefined:
+        return (
+          <li>
+            <a href="/auth/google">Log In With Google</a>
+          </li>
+        );
       default:
         return [
           <li key="1"><Payments /></li>,
