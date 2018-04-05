@@ -19,7 +19,6 @@ class Header extends Component {
           <Link
           to={this.props.auth ? "/add_credits" : "/add_credits"}
           className="btn"
-
         >
           Add Credits
         </Link></li>,
@@ -30,6 +29,12 @@ class Header extends Component {
         ];
     }
   }
+  renderAddGame(props) {
+    const isLoggedIn = this.props.auth.id;
+    if (isLoggedIn > 0) {
+      console.log(isLoggedIn);
+  }
+  }    
 
   render() {
     return (
@@ -42,6 +47,7 @@ class Header extends Component {
             Shop
           </Link>
           <ul className="right">{this.renderContent()}</ul>
+          <ul className="right">{this.renderAddGame()}</ul>
         </div>
       </nav>
     );

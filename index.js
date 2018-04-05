@@ -2,16 +2,19 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
+var cors = require("cors"); 
 const bodyParser = require("body-parser");
 const keys = require("./config/keys");
 require("./models/User");
+require("./models/Games");
 require("./services/passport");
 
-mongoose.connect(keys.mongoURI);
-
 const app = express();
-
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+mongoose.connect(keys.mongoURI);
 
 app.use(
   cookieSession({
