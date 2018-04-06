@@ -18,3 +18,11 @@ export const handleToken60 = token => async dispatch => {
 
   dispatch({ type: FETCH_USER, payload: res.data });
 };
+
+export const handleToken20 = token => async dispatch => {
+  const res = await axios.post("/api/stripe_20", token);
+
+  dispatch({ type: FETCH_USER, payload: res.data });
+};
+
+

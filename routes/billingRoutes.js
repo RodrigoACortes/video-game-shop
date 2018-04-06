@@ -19,19 +19,36 @@ module.exports = app => {
     });
 };
 
-module.exports = app => {
-    app.post('/api/stripe_60', requireLogin, async (req, res) => {
-        console.log(req.body);
+// module.exports = app => {
+//     app.post('/api/stripe_60', requireLogin, async (req, res) => {
+//         console.log(req.body);
         
-        const charge = await stripe.charges.create({
-            amount: 6000,
-            description: '$60 for 60 credits',
-            currency: 'usd',
-            source: req.body.id
-        });
-        req.user.credits += 60
-        const user = await req.user.save();
+//         const charge = await stripe.charges.create({
+//             amount: 6000,
+//             description: '$60 for 60 credits',
+//             currency: 'usd',
+//             source: req.body.id
+//         });
+//         req.user.credits += 60
+//         const user = await req.user.save();
 
-        res.send(user);
-    });
-};
+//         res.send(user);
+//     });
+// };
+
+// module.exports = app => {
+//     app.post('/api/stripe_20', requireLogin, async (req, res) => {
+//         console.log(req.body);
+        
+//         const charge = await stripe.charges.create({
+//             amount: 2000,
+//             description: '$20 for 20 credits',
+//             currency: 'usd',
+//             source: req.body.id
+//         });
+//         req.user.credits += 20
+//         const user = await req.user.save();
+
+//         res.send(user);
+//     });
+// };

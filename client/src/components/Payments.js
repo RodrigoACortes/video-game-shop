@@ -7,6 +7,19 @@ class Payments extends Component {
   render() {
     return (
       <ul>
+         {/* <li>
+    <StripeCheckout
+    name="Shop"
+        description="Buy 20 Credits"
+        amount={2000}
+        token={token => this.props.handleToken20(token)}
+        stripeKey={process.env.REACT_APP_STRIPE_KEY}
+        >
+        <button className="btn">
+            Add 20 Credits
+        </button>
+      </StripeCheckout>
+      </li> */}
         <li>
       <StripeCheckout
         name="Shop"
@@ -20,8 +33,8 @@ class Payments extends Component {
         </button>
       </StripeCheckout>
       </li>
-      <li>
-    <StripeCheckout
+      {/* <li> */}
+    {/* <StripeCheckout
     name="Shop"
         description="Buy 60 Credits"
         amount={6000}
@@ -32,7 +45,7 @@ class Payments extends Component {
             Add 60 Credits
         </button>
       </StripeCheckout>
-      </li>
+      </li> */}
       </ul>
     )     
   }

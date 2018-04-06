@@ -19,7 +19,6 @@ class Header extends Component {
           <Link
           to={this.props.auth ? "/add_credits" : "/add_credits"}
           className="btn"
-
         >
           Add Credits
         </Link></li>,
@@ -29,12 +28,12 @@ class Header extends Component {
           <li key="2"><a href="/api/logout">Logout</a></li>
         ];
     }
-  }
+  }   
 
   render() {
     return (
       <nav>
-        <div className="nav-wrapper">
+        <div className="nav-wrapper" style={{ backgroundColor: `blue`}}>
           <Link
             to={this.props.auth ? "/" : "/"}
             className="left brand-logo"
@@ -42,6 +41,7 @@ class Header extends Component {
             Shop
           </Link>
           <ul className="right">{this.renderContent()}</ul>
+          {/* <ul className="right">{this.renderAddGame()}</ul> */}
         </div>
       </nav>
     );
