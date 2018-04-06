@@ -28,18 +28,12 @@ class Header extends Component {
           <li key="2"><a href="/api/logout">Logout</a></li>
         ];
     }
-  }
-  renderAddGame(props) {
-    const isLoggedIn = this.props.auth.id;
-    if (isLoggedIn > 0) {
-      console.log(isLoggedIn);
-  }
-  }    
+  }   
 
   render() {
     return (
       <nav>
-        <div className="nav-wrapper">
+        <div className="nav-wrapper" style={{ backgroundColor: `blue`}}>
           <Link
             to={this.props.auth ? "/" : "/"}
             className="left brand-logo"
@@ -47,7 +41,7 @@ class Header extends Component {
             Shop
           </Link>
           <ul className="right">{this.renderContent()}</ul>
-          <ul className="right">{this.renderAddGame()}</ul>
+          {/* <ul className="right">{this.renderAddGame()}</ul> */}
         </div>
       </nav>
     );

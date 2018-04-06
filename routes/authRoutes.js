@@ -32,6 +32,7 @@ module.exports = app => {
   });
 
   var Game = require("../models/Games");
+  var individualGame = mongoose.model("games")
 
   app.post('/api/add_game_db', (req, res) => {
     console.log(req)
@@ -39,6 +40,7 @@ module.exports = app => {
       title: req.body.title,
       price: req.body.price,
       cover: req.body.coverLink,
+      console: req.body.console,
       proxy: true
     });
     game.save(function(err) {
@@ -46,5 +48,11 @@ module.exports = app => {
       res.send(err);
       res.json({ message: "Game successfully added!" });
     });    
+  })
+
+  app.get('/api/game_list', (req, res) => {
+    individualGame.model('games').find(function(err, games) {
+      res.send(games)
+    })
   })
 };

@@ -6,11 +6,13 @@ class AddGame extends Component {
     this.state = {
       title: "",
       price: 0,
-      coverLink: ""
+      coverLink: "",
+      console: ""
     };
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handlePriceChange = this.handlePriceChange.bind(this);
     this.handleCoverLinkChange = this.handleCoverLinkChange.bind(this);
+    this.handleConsoleChange = this.handleConsoleChange.bind(this);
     this.handleGameSubmit = this.handleGameSubmit.bind(this);
   }
   handleTitleChange(e) {
@@ -22,18 +24,23 @@ class AddGame extends Component {
   handleCoverLinkChange(e) {
     this.setState({ coverLink: e.target.value });
   }
+  handleConsoleChange(e) {
+    this.setState({ console: e.target.value });
+  }
   handleGameSubmit = event => {
-      event.preventDefault();
-    axios.post("/api/add_game_db", { 
+    event.preventDefault();
+    axios
+      .post("/api/add_game_db", {
         title: this.state.title,
-          price: this.state.price,
-          coverLink: this.state.coverLink
-    })
+        price: this.state.price,
+        coverLink: this.state.coverLink,
+        console: this.state.console
+      })
       .then(res => {
         console.log(res);
-        console.log(res.data)
-      })
-  }
+        console.log(res.data);
+      });
+  };
 
   render() {
     return (
@@ -43,7 +50,7 @@ class AddGame extends Component {
           <input
             name="title"
             type="text"
-            value={this.state.title}
+            placeholder="Title"
             onChange={this.handleTitleChange}
           />
         </label>
@@ -53,7 +60,7 @@ class AddGame extends Component {
           <input
             name="price"
             type="number"
-            value={this.state.price}
+            placeholder={this.state.price}
             onChange={this.handlePriceChange}
           />
         </label>
@@ -62,14 +69,21 @@ class AddGame extends Component {
           <input
             name="coverLink"
             type="text"
-            value={this.state.coverLink}
+            placeholder="Link to cover"
             onChange={this.handleCoverLinkChange}
           />
         </label>
         <label>
-          <input 
-          type="submit" 
-          value="Add Game" />
+          Console:
+          <input
+            name="console"
+            type="text"
+            placeholder="Console"
+            onChange={this.handleConsoleChange}
+          />
+        </label>
+        <label>
+          <input type="submit" value="Add Game" />
         </label>
       </form>
     );
