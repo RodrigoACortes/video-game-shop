@@ -17,38 +17,10 @@ module.exports = app => {
 
         res.send(user);
     });
+
+    app.post('/api/current_user_sub_credits', requireLogin, async (req, res) => {
+        req.user.credits = req.body.credits
+        const u = await req.user.save();
+        res.send(u)
+    })
 };
-
-// module.exports = app => {
-//     app.post('/api/stripe_60', requireLogin, async (req, res) => {
-//         console.log(req.body);
-        
-//         const charge = await stripe.charges.create({
-//             amount: 6000,
-//             description: '$60 for 60 credits',
-//             currency: 'usd',
-//             source: req.body.id
-//         });
-//         req.user.credits += 60
-//         const user = await req.user.save();
-
-//         res.send(user);
-//     });
-// };
-
-// module.exports = app => {
-//     app.post('/api/stripe_20', requireLogin, async (req, res) => {
-//         console.log(req.body);
-        
-//         const charge = await stripe.charges.create({
-//             amount: 2000,
-//             description: '$20 for 20 credits',
-//             currency: 'usd',
-//             source: req.body.id
-//         });
-//         req.user.credits += 20
-//         const user = await req.user.save();
-
-//         res.send(user);
-//     });
-// };
