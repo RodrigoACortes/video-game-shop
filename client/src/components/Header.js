@@ -33,7 +33,7 @@ class Header extends Component {
   render() {
     return (
       <nav>
-        <div className="nav-wrapper" style={{ backgroundColor: `blue`}}>
+        <div className="nav-wrapper" style={{ backgroundColor: `blue`, display: `fixed`, left: `0`}}>
           <Link
             to={this.props.auth ? "/" : "/"}
             className="left brand-logo"

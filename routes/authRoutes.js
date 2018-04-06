@@ -49,6 +49,7 @@ module.exports = app => {
       res.json({ message: "Game successfully added!" });
     });    
   })
+  
 
   app.get('/api/game_list', (req, res) => {
     individualGame.model('games').find(function(err, games) {
@@ -56,3 +57,5 @@ module.exports = app => {
     })
   })
 };
+
+
